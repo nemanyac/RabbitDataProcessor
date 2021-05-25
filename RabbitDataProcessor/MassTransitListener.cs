@@ -9,12 +9,13 @@ namespace RabbitDataProcessor
 
         public MassTransitListener(string url)
         {
-            Console.WriteLine($"Processor constructor: {url}");
+            var guid = Guid.NewGuid();
+            Console.WriteLine($"Processor constructor: {guid}");
             _busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
                 cfg.Host(url);
 
-                cfg.ReceiveEndpoint("MassTransitListener", e =>
+                cfg.ReceiveEndpoint($"MassTransitListener_{guid}", e =>
                 {
                     e.Consumer<RabbitMessageConsumer>();
                 });
