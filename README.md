@@ -3,7 +3,8 @@ Starting from the master branch, this is a simple app which listens to messages 
 The goal of the workshop is to containerize the application and run it in Kubernetes.
 
 ## Prerequisites
-You need Docker installed ([download link](https://www.docker.com/products/docker-desktop)).
+This assumes working on a Windows machine. Linux users can skip ahead to the third step (but they also need Docker).
+You need WSL2 and Docker installed ([instructions and download links](https://hackernoon.com/how-to-run-docker-linux-containers-natively-on-windows-ti1i3uxr)).
 
 Windows containers tend to have issues with DNS. You need to add this to Settings > Docker Engine (requires a restart of Docker desktop)
 >  "dns": ["1.1.1.1"]
