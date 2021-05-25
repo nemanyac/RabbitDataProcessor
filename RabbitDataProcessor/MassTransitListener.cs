@@ -1,5 +1,5 @@
-﻿using MassTransit;
-using RabbitDataShared;
+﻿using System;
+using MassTransit;
 
 namespace RabbitDataProcessor
 {
@@ -9,6 +9,7 @@ namespace RabbitDataProcessor
 
         public MassTransitListener(string url)
         {
+            Console.WriteLine($"Processor constructor: {url}");
             _busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
                 cfg.Host(url);
@@ -20,6 +21,7 @@ namespace RabbitDataProcessor
             });
 
             _busControl.Start();
+            Console.WriteLine("Processor started");
         }
     }
 }
