@@ -83,4 +83,4 @@ This means not waiting for the user to do a keypress, logging to a logging servi
 By dependencies, I mean RabbitMq and Seq (a logging service)
 
 You can find the result of this work in the stage_5_detached-console-app branch:
-> git checkout stage_4_docker-compose
+> git checkout stage_5_detached-console-app 
