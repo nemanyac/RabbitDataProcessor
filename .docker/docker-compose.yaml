@@ -6,4 +6,36 @@ services:
         build:
             context: ..\
             dockerfile: .\RabbitDataProcessor\Dockerfile
-        command: amqps://...
+        environment:
+            RABBITMQ_USER: rdpQueueUser
+            RABBITMQ_PASS: rdpQueueUser
+            RABBITMQ_VHOST: dev
+            RABBITMQ_URI: localhost:5672
+            WAIT_HOSTS: "rdprabbitmq:5672"
+            WAIT_HOSTS_TIMEOUT: 300
+            WAIT_SLEEP_INTERVAL: 30
+            WAIT_HOST_CONNECT_TIMEOUT: 30
+        depends_on: [rdprabbitmq, rdpseq]
+        command: amqps://rdpQueueUser:rdpQueueUser@rdprabbitmq:5672/dev
+
+    rdprabbitmq:
+        image: rabbitmq:3-management
+        container_name: rdp-rabbitmq
+        restart: always
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        environment:
+            RABBITMQ_DEFAULT_USER: rdpQueueUser
+            RABBITMQ_DEFAULT_PASS: rdpQueueUser
+            RABBITMQ_DEFAULT_VHOST: dev
+    
+    rdpseq:
+        image: datalust/seq:latest
+        container_name: rdp-seq
+        restart: always
+        ports:
+            - "5341:80"
+        environment:
+            ACCEPT_EULA: "Y"
+

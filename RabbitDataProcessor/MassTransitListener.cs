@@ -1,5 +1,4 @@
-﻿using System;
-using MassTransit;
+﻿using MassTransit;
 
 namespace RabbitDataProcessor
 {
@@ -9,8 +8,11 @@ namespace RabbitDataProcessor
 
         public MassTransitListener(string url)
         {
+            using var log = SerilogHelper.BuildSerilog();
+
             var guid = System.Environment.MachineName;
-            Console.WriteLine($"Processor constructor: {guid}");
+            log.Debug("Processor constructor: {guid}", guid);
+
             _busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
                 cfg.Host(url);
@@ -22,7 +24,7 @@ namespace RabbitDataProcessor
             });
 
             _busControl.Start();
-            Console.WriteLine("Processor started");
+            log.Debug("Processor started");
         }
     }
 }

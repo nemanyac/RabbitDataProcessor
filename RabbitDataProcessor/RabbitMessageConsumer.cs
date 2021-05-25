@@ -1,5 +1,4 @@
-﻿using System;
-using MassTransit;
+﻿using MassTransit;
 using RabbitDataShared;
 using System.Threading.Tasks;
 
@@ -9,7 +8,8 @@ namespace RabbitDataProcessor
     {
         public async Task Consume(ConsumeContext<RabbitMessage> context)
         {
-            Console.WriteLine($"{context.Message.TimeStamp} ({context.Message.Sender}) : {context.Message.Content}");
+            using var log = SerilogHelper.BuildSerilog();
+            log.Information("{Sender}: {Content}", context.Message.Sender, context.Message.Content);
         }
     }
 }
