@@ -25,6 +25,7 @@ Then we use some proper logging library and add Seq to docker compose.
 
 
 ## First step
+Docker Desktop should be configured to run in Windows mode!
 The application is written in .NET Framework, so for starters we are going to use a Windows container.
 Create a simple docker file.
 To build the image run the following command from the folder which contains it:
