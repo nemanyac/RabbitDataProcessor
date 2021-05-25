@@ -75,4 +75,10 @@ Let's fix that in the next step
 You can find the result of this work in the stage_4_docker-compose branch:
 > git checkout stage_4_docker-compose
 
-##
+## Fifth step
+Time to step up our game. We want to run a detached console application.
+This means not waiting for the user to do a keypress, logging to a logging service, and adding our dependencies to docker compose.
+By dependencies, I mean RabbitMq and Seq (a logging service)
+
+You can find the result of this work in the stage_5_detached-console-app branch:
+> git checkout stage_4_docker-compose
