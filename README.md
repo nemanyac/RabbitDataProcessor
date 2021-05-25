@@ -63,5 +63,16 @@ You can check out the stage_2_linux branch for the final result:
 > git checkout stage_2_linux
 
 ## Fourth step
-Time to add docker compose. Some modifications will be needed as we no longer have an interactive shell and we want to not source-controll secrets.
+Time to add docker compose.
+Once done, we can run our container with this command:
+> docker compose up
 
+But if we want to run it in a detached mode (without attaching our console window), it won't work:
+> docker compose up -d
+
+Let's fix that in the next step
+
+You can find the result of this work in the stage_4_docker-compose branch:
+> git checkout stage_4_docker-compose
+
+##
