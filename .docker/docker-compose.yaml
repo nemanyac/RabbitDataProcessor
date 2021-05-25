@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+    rdp:
+        container_name: rdp
+        image: rdp
+        build:
+            context: ..\
+            dockerfile: .\RabbitDataProcessor\Dockerfile
+        command: amqps://...
